@@ -74,7 +74,6 @@ O EduFlow LMS oferece um conjunto integrado de funcionalidades que atendem às n
 | **Criar Curso** | **Gerenciar Matricula** |
 | ![Criar Curso](assets/Tela3_Admin.png) | ![Gerenciar Matricula](assets/Tela4_Admin.png) |
 
-
 ---
 
 **Características de qualidade:**
@@ -84,6 +83,141 @@ O EduFlow LMS oferece um conjunto integrado de funcionalidades que atendem às n
 - **Confiabilidade:** sistema estável e disponível especialmente nos horários de maior uso, com salvamento automático de respostas de avaliações para evitar perda de progresso.
 - **Manutenibilidade:** estrutura modular que permite atualização de funcionalidades sem comprometer a operação do sistema.
 - **Escalabilidade:** capacidade de atender entre 1.000 e 5.000 usuários ativos mensais, com suporte a streaming de vídeos por serviço externo dedicado.
+
+---
+
+## 2. Descrição dos Usuários
+
+Os usuários do EduFlow LMS possuem diferentes níveis de permissão e interagem com o sistema de maneiras distintas, focando na administração, no ensino ou no aprendizado. Abaixo estão detalhados os perfis baseados no padrão ISO/IEC/IEEE 29148:2011.
+
+| Atributo | Descrição |
+| :--- | :--- |
+| **Usuário ID** | USER-001 |
+| **Nome do Perfil** | Administrador da Instituição |
+| **Descrição** | Responsável pela gestão macro da instituição dentro da plataforma. |
+| **Experiência Técnica** | Média; facilidade com navegação em sistemas web e gestão de painéis administrativos. |
+| **Frequência de Uso** | Regular a Alta (dependendo do volume de novas turmas e alunos). |
+| **Principais Objetivos** | Criar/configurar a instituição, gerenciar cadastros (professores e alunos), criar cursos, alocar professores, gerenciar matrículas e analisar relatórios de uso. |
+| **Desafios** | Gerenciar grandes volumes de dados (como cadastros em lote) e garantir que as permissões estejam corretas. |
+| **Restrições** | Gerencia toda a instituição, mas não possui permissão para criar ou editar o conteúdo pedagógico dos cursos. |
+| **Requisitos Principais** | RF01, RF02, RF03, RF08. |
+
+<br>
+
+| Atributo | Descrição |
+| :--- | :--- |
+| **Usuário ID** | USER-002 |
+| **Nome do Perfil** | Professor |
+| **Descrição** | Profissional de educação responsável por estruturar e ministrar o conteúdo. |
+| **Experiência Técnica** | Baixa a Média; precisa de uma interface intuitiva para não ter dificuldades com o upload de arquivos. |
+| **Frequência de Uso** | Alta; atualizações frequentes de aulas, criação de avaliações e acompanhamento do fórum. |
+| **Principais Objetivos** | Criar módulos e aulas, fazer upload de materiais (vídeos/PDFs), criar avaliações, monitorar o progresso dos alunos e responder dúvidas no fórum. |
+| **Desafios** | Organizar o conteúdo de forma clara e manter o engajamento dos alunos nas aulas a distância. |
+| **Restrições** | Possui acesso e visão apenas aos cursos aos quais foi formalmente atribuído como professor. |
+| **Requisitos Principais** | RF03, RF04, RF05, RF09. |
+
+<br>
+
+| Atributo | Descrição |
+| :--- | :--- |
+| **Usuário ID** | USER-003 |
+| **Nome do Perfil** | Aluno |
+| **Descrição** | Consumidor final do conteúdo oferecido pela instituição. |
+| **Experiência Técnica** | Variável (Baixa a Alta); o sistema deve ser extremamente amigável para englobar qualquer nível de familiaridade tecnológica. |
+| **Frequência de Uso** | Alta; acessos diários ou semanais para estudos. |
+| **Principais Objetivos** | Assistir aulas, baixar materiais, realizar avaliações, acompanhar o próprio progresso, interagir no fórum e emitir certificados. |
+| **Desafios** | Manter-se motivado, não perder o progresso em caso de queda de internet e organizar sua rotina de estudos. |
+| **Restrições** | Acesso restrito exclusivamente aos conteúdos dos cursos em que está matriculado. |
+| **Requisitos Principais** | RF06, RF07, RF09, RF10. |
+
+---
+
+## 3. Restrições do Projeto e do Produto
+
+Com base nos requisitos não funcionais e na arquitetura esperada para o LMS, foram identificadas as seguintes restrições, baseadas no padrão IEEE-830:
+
+| Campo | Descrição |
+| :--- | :--- |
+| **Restrição ID** | NF-CONST-001 |
+| **Título** | Restrição de Hospedagem de Vídeos (Integração) |
+| **Descrição** | O sistema não deve hospedar os vídeos nativamente em seu próprio servidor de banco de dados/aplicação. Deve ser feita a integração com um serviço de armazenamento externo especializado em streaming de vídeos (ex: AWS S3, Vimeo, YouTube corporativo). |
+| **Origem** | Requisitos Não-Funcionais / Arquitetura de Software |
+| **Critérios de verificação e validação** | a. A tentativa de upload de um vídeo deve encaminhar o arquivo diretamente para o serviço externo via API. <br> b. O player do curso deve consumir o vídeo a partir da URL do serviço externo. |
+| **Relacionamento** | Relaciona-se com RF04 (Upload de materiais). |
+
+<br>
+
+| Campo | Descrição |
+| :--- | :--- |
+| **Restrição ID** | NF-CONST-002 |
+| **Título** | Isolamento de Dados e Segurança de Acesso |
+| **Descrição** | O sistema deve garantir que dados de uma instituição sejam invisíveis para outras. Além disso, alunos e professores devem acessar estritamente os cursos vinculados aos seus perfis por meio de login e senha. |
+| **Origem** | Requisitos de Segurança |
+| **Critérios de verificação e validação** | a. Testes de intrusão e de autorização devem falhar caso um aluno tente acessar via URL direta um curso no qual não tem matrícula. |
+| **Relacionamento** | Relaciona-se com a segurança básica (RNF). |
+
+<br>
+
+| Campo | Descrição |
+| :--- | :--- |
+| **Restrição ID** | NF-CONST-003 |
+| **Título** | Capacidade e Escalabilidade |
+| **Descrição** | O banco de dados e a infraestrutura devem suportar o volume projetado para o primeiro ano: aproximadamente 500 cursos, 10.000 matrículas e de 1.000 a 5.000 usuários ativos por mês sem queda de performance. |
+| **Origem** | Requisitos de Negócio (Volume de dados esperado) |
+| **Critérios de verificação e validação** | a. Testes de carga simulando acessos simultâneos de alunos em horários de pico. |
+| **Relacionamento** | Relaciona-se com RNF de Estimativa de usuários e Disponibilidade. |
+
+---
+
+## 4. Análise de Riscos e Mitigação
+
+Abaixo estão listados os principais riscos do projeto EduFlow, mapeados a partir dos desafios técnicos do estudo de caso, usando a estrutura baseada no padrão IEEE-830:
+
+| Campo | Descrição |
+| :--- | :--- |
+| **ID do Risco** | RISCO-001 |
+| **Descrição** | Lentidão e instabilidade no sistema devido ao acesso simultâneo de vídeos pesados por múltiplos alunos. |
+| **Categoria** | Técnico / Infraestrutura |
+| **Probabilidade** | Alta |
+| **Impacto** | Alto (Pode inviabilizar o uso do sistema durante os horários de aula). |
+| **Ação de Mitigação** | Utilizar APIs de serviços externos otimizados para streaming de vídeo com suporte a CDN (Content Delivery Network). |
+| **Plano de Contingência** | Oferecer a opção para o aluno baixar o vídeo em menor resolução ou acessar a transcrição em texto da aula temporariamente. |
+
+<br>
+
+| Campo | Descrição |
+| :--- | :--- |
+| **ID do Risco** | RISCO-002 |
+| **Descrição** | Perda do progresso do aluno em uma avaliação no caso de queda de conexão ou falha no navegador. |
+| **Categoria** | Técnico / Experiência do Usuário (UX) |
+| **Probabilidade** | Média |
+| **Impacto** | Alto (Gera enorme frustração e sobrecarga no suporte técnico). |
+| **Ação de Mitigação** | Implementar uma funcionalidade de "auto-save" (salvamento automático) via cache local do navegador ou requisições assíncronas constantes ao banco de dados durante a prova. |
+| **Plano de Contingência** | Permitir que o professor reinicie a tentativa de avaliação do aluno manualmente. |
+
+<br>
+
+| Campo | Descrição |
+| :--- | :--- |
+| **ID do Risco** | RISCO-003 |
+| **Descrição** | Dificuldade por parte dos professores na organização e estruturação dos conteúdos de forma clara. |
+| **Categoria** | Usabilidade |
+| **Probabilidade** | Média |
+| **Impacto** | Médio (Afeta a qualidade do ensino e a satisfação do aluno). |
+| **Ação de Mitigação** | Desenvolver uma interface (UX/UI) altamente intuitiva, baseada em "arrastar e soltar" (drag and drop) e fornecer templates sugeridos para estruturação de módulos. |
+| **Plano de Contingência** | Disponibilizar uma base de conhecimento (tutoriais) e um canal de suporte focado na integração de novos professores (onboarding). |
+
+<br>
+
+| Campo | Descrição |
+| :--- | :--- |
+| **ID do Risco** | RISCO-004 |
+| **Descrição** | Baixo engajamento e alto índice de abandono dos cursos por parte dos alunos matriculados. |
+| **Categoria** | Negócio / Usuário |
+| **Probabilidade** | Alta |
+| **Impacto** | Alto (Ameaça a eficácia do LMS e os indicadores da instituição). |
+| **Ação de Mitigação** | Integrar um sistema de envio de e-mails para notificações automáticas, lembretes de prazos, gamificação simples (barras de progresso) e emissão de certificados imediatos. |
+| **Plano de Contingência** | Geração de relatórios de inatividade permitindo à instituição contatar os alunos faltosos proativamente. |
 
 ---
 
