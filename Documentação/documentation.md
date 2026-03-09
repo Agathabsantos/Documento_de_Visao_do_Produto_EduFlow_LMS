@@ -50,6 +50,14 @@ O EduFlow LMS oferece um conjunto integrado de funcionalidades que atendem às n
 
 **Wireframes de baixa resolução:**
 
+#### Visão do Usuário (Aluno)
+
+| Dashboard | Aula
+| :---: | :---: |
+| ![Dashboard](<../assets/Tela1 Aluno.png>) | ![Aula](../assets/Tela2_Aluno.png)
+| **Cursos** | **Avaliações** |
+| ![Cursos](../assets/cursos_aluno.png) | ![Avaliacao](../assets/avaliacao_aluno.png) |
+
 
 ---
 
