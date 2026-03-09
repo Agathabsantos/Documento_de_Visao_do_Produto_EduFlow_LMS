@@ -68,9 +68,9 @@ O EduFlow LMS oferece um conjunto integrado de funcionalidades que atendem às n
 
 #### Visão do Administrador
 
-| Dashboard | Aula |
+| Painel de Controle | Usuários |
 | :---: | :---: |
-| ![Dashboard](assets/Tela1_Admin.png) | ![Aula](assets/Tela2_Admin.png) |
+| ![Painel de Controle](assets/Tela1_Admin.png) | ![Usuários](assets/Tela2_Admin.png) |
 | **Criar Curso** | **Gerenciar Matricula** |
 | ![Criar Curso](assets/Tela3_Admin.png) | ![Gerenciar Matricula](assets/Tela4_Admin.png) |
 
