@@ -64,7 +64,7 @@ O EduFlow LMS oferece um conjunto integrado de funcionalidades que atendem às n
 | :---: | :---: |
 | ![Dashboard](assets/Tela1_Professor.png) | ![Aula](assets/Tela2_Professor.png) |
 | **Avaliações** | **Desempenho dos Alunos** |
-| ![Avaliações](assets/Tela3_Professor.png) | ![Desempenho dos Alunos](assets/Tela4_Professor.png) |
+| ![Avaliações](assets/Tela4_Professor.png) | ![Desempenho dos Alunos](assets/Tela3_Professor.png) |
 
 #### Visão do Administrador
 
@@ -128,7 +128,7 @@ Os usuários do EduFlow LMS possuem diferentes níveis de permissão e interagem
 | **Principais Objetivos** | Assistir aulas, baixar materiais, realizar avaliações, acompanhar o próprio progresso, interagir no fórum e emitir certificados. |
 | **Desafios** | Manter-se motivado, não perder o progresso em caso de queda de internet e organizar sua rotina de estudos. |
 | **Restrições** | Acesso restrito exclusivamente aos conteúdos dos cursos em que está matriculado. |
-| **Requisitos Principais** | RF06, RF07, RF09, RF10. |
+| **Requisitos Principais** | RF06, RF07, RF08, RF09, RF10. |
 
 ---
 
