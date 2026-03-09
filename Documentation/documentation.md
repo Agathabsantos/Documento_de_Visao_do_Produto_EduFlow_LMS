@@ -52,11 +52,27 @@ O EduFlow LMS oferece um conjunto integrado de funcionalidades que atendem às n
 
 #### Visão do Usuário (Aluno)
 
-| Dashboard | Aula
+| Dashboard | Aula |
 | :---: | :---: |
-| ![Dashboard](<../assets/Tela1 Aluno.png>) | ![Aula](../assets/Tela2_Aluno.png)
-| **Cursos** | **Avaliações** |
-| ![Cursos](../assets/cursos_aluno.png) | ![Avaliacao](../assets/avaliacao_aluno.png) |
+| ![Dashboard](assets/Tela1_Aluno.png) | ![Aula](assets/Tela2_Aluno.png) |
+| **Avaliações** | **Forum** |
+| ![Avaliação](assets/Tela3_Aluno.png) | ![Forum](assets/Tela4_Aluno.png) |
+
+#### Visão do Professor
+
+| Dashboard | Aula |
+| :---: | :---: |
+| ![Dashboard](assets/Tela1_Professor.png) | ![Aula](assets/Tela2_Professor.png) |
+| **Avaliações** | **Desempenho dos Alunos** |
+| ![Avaliações](assets/Tela3_Professor.png) | ![Desempenho dos Alunos](assets/Tela4_Professor.png) |
+
+#### Visão do Administrador
+
+| Dashboard | Aula |
+| :---: | :---: |
+| ![Dashboard](assets/Tela1_Admin.png) | ![Aula](assets/Tela2_Admin.png) |
+| **Criar Curso** | **Gerenciar Matricula** |
+| ![Criar Curso](assets/Tela3_Admin.png) | ![Gerenciar Matricula](assets/Tela4_Admin.png) |
 
 
 ---
