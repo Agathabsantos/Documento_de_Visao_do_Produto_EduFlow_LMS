@@ -79,7 +79,7 @@ O EduFlow LMS oferece um conjunto integrado de funcionalidades que atendem às n
 **Características de qualidade:**
 
 - **Usabilidade:** interface intuitiva e fácil navegação, permitindo que qualquer perfil de usuário opere o sistema sem necessidade de treinamento prévio.
-- **Segurança:** controle de acesso baseado em perfis — aluno, professor e administrador — com autenticação por login e senha e isolamento de dados entre instituições.
+- **Segurança:** controle de acesso baseado em perfis (aluno, professor e administrador) com autenticação por login e senha e isolamento de dados entre instituições.
 - **Confiabilidade:** sistema estável e disponível especialmente nos horários de maior uso, com salvamento automático de respostas de avaliações para evitar perda de progresso.
 - **Manutenibilidade:** estrutura modular que permite atualização de funcionalidades sem comprometer a operação do sistema.
 - **Escalabilidade:** capacidade de atender entre 1.000 e 5.000 usuários ativos mensais, com suporte a streaming de vídeos por serviço externo dedicado.
